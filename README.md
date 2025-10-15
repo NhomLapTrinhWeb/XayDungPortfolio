@@ -15,3 +15,4 @@ feature/profile-<ten>: làm việc cá nhân → PR vào dev.
 
 Checklist nộp: banner/navbar, layout flex/grid, About/Career/Hobbies/Skills/Languages/Awards/Projects/Contact, ảnh cá nhân ≥ 4, CSS3 animation, clean code & comment.
 "# XayDungPortfolio" 
+"# XayDungPortfolio" 
