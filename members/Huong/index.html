@@ -3,82 +3,269 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nguyễn Văn A - Portfolio</title>
+  <title>Portfolio - Demo</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Banner + Navbar -->
-  <header class="banner">
-    <h1>Portfolio - Nguyễn Văn A</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Trang chủ</a></li>
-        <li><a href="#about">Thông tin</a></li>
-        <li><a href="#career">Nghề nghiệp</a></li>
-        <li><a href="#skills">Kỹ năng</a></li>
-        <li><a href="#projects">Dự án</a></li>
-        <li><a href="#contact">Liên hệ</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- Nội dung trang cá nhân -->
-  <main>
-    <section id="about" class="profile-section">
-      <h2>Thông tin cá nhân</h2>
-      <p><strong>Họ tên:</strong> Nguyễn Văn A</p>
-      <p><strong>Ngày sinh:</strong> 01/01/2002</p>
-      <p><strong>Email:</strong> nguyenvana@example.com</p>
-      <p><strong>Giới thiệu:</strong> Lập trình viên Frontend yêu thích sáng tạo giao diện web hiện đại.</p>
-    </section>
+<!-- Navbar -->
+<header class="navbar">
+  <div class="navbar-brand"><a href="#">MyPortfolio</a></div>
+  <button class="navbar-toggler" id="menu-toggle"><i class="fas fa-bars"></i></button>
+  <ul class="navbar-menu" id="navbar-menu">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
 
-    <section id="career" class="profile-section">
-      <h2>Mục tiêu nghề nghiệp</h2>
-      <p>Trở thành Frontend Developer chuyên nghiệp, có khả năng phát triển giao diện thân thiện, sáng tạo.</p>
-    </section>
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+  <div class="hero-content">
+    <p>Xin chào, tôi là</p>
+    <h1>Lê Thị Lan Hương</h1>
+    <p>Data Science | Tester</p>
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://github.com/lanhuongxx" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <a href="#contact" class="btn btn-primary">Liên hệ</a>
+  </div>
+  <div class="hero-image">
+    <img src="image/avatar.jpeg" alt="Avatar">
+  </div>
+</section>
 
-    <section id="skills" class="profile-section">
-      <h2>Kỹ năng & Ngôn ngữ</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>ReactJS, TailwindCSS</li>
-        <li>Tiếng Anh B1</li>
-      </ul>
-    </section>
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="about-content-card">
+    <h2>Giới Thiệu</h2>
+    <div class="about-flex-wrapper">
+      <div class="about-image-left">
+        <img src="image/me1.jpeg" alt="About me">
+      </div>
+      <div class="about-text-right">
+        <p>Chào mọi người! Mình là <strong>Lê Thị Lan Hương</strong>, sinh viên năm 3 ngành <strong>Khoa học Dữ liệu</strong>.</p>
+        <p>Mình có hơn 2 năm kinh nghiệm học tập và thực hiện các dự án lập trình với <strong>Python</strong> và <strong>JavaScript</strong>, và hiện đang học thêm về lập trình web để mở rộng kỹ năng.</p>
+        <p>Mình thực sự yêu thích công việc hiện tại, bởi mình tin rằng việc tạo ra những sản phẩm nhỏ từ các dự án cá nhân không chỉ là một công việc kỹ thuật mà còn là một nghệ thuật mang giá trị thẩm mỹ.</p>
+        <p>Công việc của mình bao gồm thu thập, xử lý, phân tích dữ liệu, xây dựng mô hình và truyền đạt kết quả một cách rõ ràng, trực quan.</p>
+        <p>Nếu bạn quan tâm đến việc hợp tác hoặc thuê mình, vui lòng liên hệ qua thông tin được ghim bên dưới.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="hobbies" class="profile-section">
-      <h2>Sở thích</h2>
-      <p>Đọc sách, chụp ảnh, và chạy bộ buổi sáng.</p>
-    </section>
+<!-- Sở thích Section -->
+<section id="hobbies" class="hobbies-section">
+  <h2>Sở Thích</h2>
+  <div class="tabs-container">
+    <div class="tabs-header">
+      <button class="tab-button active" data-tab="creative">Sáng tạo</button>
+      <button class="tab-button" data-tab="learning">Học hỏi</button>
+      <button class="tab-button" data-tab="leisure">Giải trí</button>
+    </div>
+    <div class="tabs-content">
+      <div id="creative" class="tab-pane active">
+        <div class="hobbies-grid">
+          <div class="hobby-item">
+            <i class="fas fa-camera-retro"></i>
+            <h3>Nhiếp ảnh<br>& Chỉnh sửa ảnh</h3>
+          </div>
+          <div class="hobby-item">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Vẽ<br>& Ký họa</h3>
+          </div>
+        </div>
+      </div>
+      <div id="learning" class="tab-pane">
+        <div class="hobbies-grid">
+          <div class="hobby-item">
+            <i class="fas fa-book-reader"></i>
+            <h3>Xem youtube về data<br>& Web học w3schools</h3>
+          </div>
+          <div class="hobby-item">
+            <i class="fas fa-podcast"></i>
+            <h3>Nghe podcast</h3>
+          </div>
+          <div class="hobby-item">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Tham gia các cuộc thi<br>coding</h3>
+          </div>
+        </div>
+      </div>
+      <div id="leisure" class="tab-pane">
+        <div class="hobbies-grid">
+          <div class="hobby-item">
+            <i class="fas fa-mountain"></i>
+            <h3>Đọc truyện</h3>
+          </div>
+          <div class="hobby-item">
+            <i class="fas fa-gamepad"></i>
+            <h3>Chơi game<br>& Xem phim</h3>
+          </div>
+          <div class="hobby-item">
+            <i class="fas fa-headphones-alt"></i>
+            <h3>Nghe nhạc</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="certs" class="profile-section">
-      <h2>Chứng chỉ & Giải thưởng</h2>
-      <p>Chứng chỉ Lập trình Web cơ bản - F8</p>
-    </section>
+<!-- ================== Gallery / Slider Section ================== -->
+<section id="gallery" class="slider-section">
+  <h2>Bộ sưu tập cá nhân</h2>
+<div class="slides">
+  <img src="image/me1.jpeg" alt="Ảnh 1">
+  <img src="image/me2.jpeg" alt="Ảnh 2">
+  <img src="image/me3.jpeg" alt="Ảnh 3">
+  <img src="image/me4.jpeg" alt="Ảnh 4">
+  <!-- lặp lại để chạy mượt -->
+  <img src="image/me1.jpeg" alt="Ảnh 1">
+  <img src="image/me2.jpeg" alt="Ảnh 2">
+  <img src="image/me3.jpeg" alt="Ảnh 3">
+  <img src="image/me4.jpeg" alt="Ảnh 4">
+</div>
+</section>
 
-    <section id="projects" class="profile-section">
-      <h2>Dự án</h2>
-      <p>Website giới thiệu bản thân, dự án mini e-commerce bằng React.</p>
-    </section>
+<!-- Skills Section -->
+<section id="skills">
+  <h2>Kỹ năng</h2>
+  <div class="tabs-container skills-tabs-container"> <!-- Added a class for specific skill tab styling -->
+    <div class="tabs-header">
+      <button class="tab-button active" data-tab="tech-stack">Skill</button>
+      <button class="tab-button" data-tab="languages">Ngoại ngữ</button>
+    </div>
+    <div class="tabs-content">
+      <div id="tech-stack" class="tab-pane active">
+        <div class="skills-grid">
+          <div class="skill-item"><i class="fab fa-html5"></i><h3>HTML5</h3></div>
+          <div class="skill-item"><i class="fab fa-css3-alt"></i><h3>CSS3</h3></div>
+          <div class="skill-item"><i class="fab fa-js-square"></i><h3>JavaScript</h3></div>
+          <div class="skill-item"><i class="fas fa-database"></i><h3>SQL</h3></div>
+          <!-- Add more tech skills here as needed -->
+          <div class="skill-item"><i class="fab fa-python"></i><h3>Python</h3></div>
+          <div class="skill-item"><i class="fas fa-robot"></i><h3>Machine Learning</h3></div>
+          <div class="skill-item"><i class="fas fa-chart-bar"></i><h3>Data Visualization</h3></div>
+          <div class="skill-item"><i class="fas fa-bug"></i><h3>Testing</h3></div>
+          <div class="skill-item"><i class="fas fa-chart-line"></i><h3>github</h3></div>
+        </div>
+      </div>
+      <div id="languages" class="tab-pane">
+        <div class="languages-grid"> <!-- Changed to languages-grid for potential specific styling -->
+          <div class="skill-item">
+            <i class="fas fa-globe-americas"></i>
+            <h3>Tiếng Anh <br>(IELTS 6.5)</h3>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="gallery" class="profile-section gallery">
-      <h2>Ảnh cá nhân</h2>
-      <img src="https://picsum.photos/250?11" alt="">
-      <img src="https://picsum.photos/250?12" alt="">
-      <img src="https://picsum.photos/250?13" alt="">
-      <img src="https://picsum.photos/250?14" alt="">
-    </section>
+<!-- Projects Section -->
+<section id="projects">
+  <h2>Dự án</h2>
+  <div class="projects-grid">
 
-    <section id="contact" class="profile-section">
-      <h2>Liên hệ</h2>
-      <p>📧 Email: nguyenvana@example.com</p>
-      <p>💻 Github: <a href="#">github.com/nguyenvana</a></p>
-      <p>📘 Facebook: <a href="#">fb.com/nguyenvana</a></p>
-    </section>
-  </main>
+    <!-- Project Card 1 -->
+    <div class="project-outer-card"> <!-- Thêm div bọc ngoài -->
+      <div class="project-card">
+        <img src="image/project1.jpeg" alt="Project 1"> <!-- Giữ nguyên ảnh hoặc thay đổi nếu có ảnh khác phù hợp -->
+        <div class="project-content">
+          <h3>Website protfolio</h3>
+          <p>Website portfolio</p>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+          </div>
+          <div class="project-links-bottom">
+            <a href="https://github.com/NhomLapTrinhWeb/XayDungPortfolio" class="project-icon-link" aria-label="Xem Code"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <footer>
-    <a href="index.html" class="btn">← Quay lại trang chủ</a>
-  </footer>
+    <!-- Project Card 2: Giống "Sahabat Muslim" -->
+    <div class="project-outer-card">
+      <div class="project-card">
+        <img src="image/project2.jpeg" alt="Project 2">
+        <div class="project-content">
+          <h3>CI-CD</h3>
+          <p>Viết file kiểm thử tự động CI-CD</p>
+          <div class="project-tech">
+            <span>Dockerfile</span>
+            <span>JavaScript</span>
+          </div>
+          <div class="project-links-bottom">
+            <a href="https://github.com/lanhuongxx/nao" class="project-icon-link" aria-label="Xem Code"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Thêm các dự án khác ở đây nếu có -->
+  </div>
+
+  <!-- Chứng chỉ -->
+  <div style="margin-top:4rem; text-align:left;">
+    <h2>Chứng Chỉ</h2>
+    <ul style="margin-top:1rem; font-size:1.1rem; line-height:1.8;">
+      <li>🏅 Nghiên cứu khoa học - Giải nhất (2024-2025)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <h2>Liên hệ</h2>
+  <p>Hãy để lại lời nhắn cho tôi:</p>
+  <form action="https://formspree.io/f/xeorvnrd" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Tên của bạn" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Nội dung" required></textarea>
+    <button type="submit" class="btn btn-primary">Gửi</button>
+  </form>
+  <div class="contact-info">
+    <p><i class="fas fa-envelope"></i> huongltl4594@ut.edu.vn</p>
+    <p><i class="fas fa-phone"></i> 0347-071-858</p>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector('.contact-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      alert('✅ Gửi thành công! Cảm ơn bạn đã liên hệ.');
+      form.reset();
+    } else {
+      alert('❌ Gửi thất bại. Vui lòng thử lại sau.');
+    }
+  });
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Le Thi Lan Huong all rights reserved.</p>
+  <button id="back-to-top" class="btn btn-secondary">↑ Lên đầu</button>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
