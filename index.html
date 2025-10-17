@@ -3,63 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nhóm Portfolio - Trang chủ</title>
+  <title>Nhóm Portfolio</title>
   <link rel="stylesheet" href="common/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=Montserrat:ital,wght@0,100..900;1,100..900">
 </head>
 <body>
-  <!-- Banner + Navbar -->
-  <header class="banner">
-    <h1>NHÓM PORTFOLIO</h1>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Nhóm <span>Portfolio</span></div>
     <nav>
       <ul>
-        <li><a href="index.html">Trang chủ</a></li>
-        <!-- Mọi người link đến page cá nhân ở đây -->
-        <li><a href="members/Phong/index.html">Võ Khánh Phong</a></li>
-        <li><a href="members/Chuong/index.html">Phạm Đỗ Hoàng Chương</a></li>
-        <li><a href="members/Huong/index.html">Lê Thị Lan Hương</a></li>
-        <li><a href="members/Nhi/index.html">Nguyễn Thị Thảo Nhi</a></li>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="members/Phong/index.html">Phong</a></li>
+        <li><a href="members/Chuong/index.html">Chương</a></li>
+        <li><a href="members/Huong/index.html">Hương</a></li>
+        <li><a href="members/Nhi/index.html">Nhi</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Phần giới thiệu 4 thành viên -->
-  <section class="intro">
-    <h2>Thành viên nhóm</h2>
-    <p>Các thành viên của nhóm cùng nhau phát triển website giới thiệu cá nhân.</p>
-  </section>
-
+  <!-- Slider Lundev -->
   <div class="container">
-    <!-- Card 1 -->
-    <div class="card">
-      <img src="https://picsum.photos/300?1" alt="Võ Khánh Phong">
-      <h3>Võ Khánh Phong</h3>
-      <a href="members/Phong/index.html" class="btn">Xem chi tiết</a>
+    <div id="slide">
+      <div class="item" style="background-image: url('/common/images/phong.jpg');"> <!-- tu thay link anh vao -->
+        <div class="content">
+          <div class="name">Võ Khánh Phong</div>
+          <div class="des">Developer</div> <!-- tu thay chuc vu vao -->
+          <a href="members/Phong/index.html"><button>Xem Portfolio</button></a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image: url('/common/images/2.jpeg');"> <!-- tu thay link anh vao -->
+        <div class="content">
+          <div class="name">Phạm Đỗ Hoàng Chương</div>
+          <div class="des">UI/UX Designer</div> <!-- tu thay chuc vu vao -->
+          <a href="members/Chuong/index.html"><button>Xem Portfolio</button></a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image: url('/common/images/huong.jpg');">
+        <div class="content">
+          <div class="name">Lê Thị Lan Hương</div>
+          <div class="des">Data Science</div>
+          <a href="members/Huong/index.html"><button>Xem Portfolio</button></a>
+        </div>
+      </div>
+
+      <div class="item" style="background-image: url('/common/images/1.jpeg');"> <!-- tu thay link anh vao -->
+        <div class="content">
+          <div class="name">Nguyễn Thị Thảo Nhi</div>
+          <div class="des">Marketing Specialist</div> <!-- tu thay chuc vu vao -->
+          <a href="members/Nhi/index.html"><button>Xem Portfolio</button></a>
+        </div>
+      </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card">
-      <img src="https://picsum.photos/300?2" alt="Phạm Đỗ Hoàng Chương">
-      <h3>Phạm Đỗ Hoàng Chương"</h3>
-      <a href="members/Chuong/index.html" class="btn">Xem chi tiết</a>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="card">
-      <img src="https://picsum.photos/300?3" alt="Lê Thị Lan Hương">
-      <h3>Lê Thị Lan Hương</h3>
-      <a href="members/Huong/index.html" class="btn">Xem chi tiết</a>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="card">
-      <img src="https://picsum.photos/300?4" alt="Nguyễn Thị Thảo Nhi">
-      <h3>Phạm Thị D</h3>
-      <a href="members/Nhi/index.html" class="btn">Xem chi tiết</a>
+    <div class="buttons">
+      <button id="prev"><i class="fa-solid fa-angle-left"></i></button>
+      <button id="next"><i class="fa-solid fa-angle-right"></i></button>
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 - Nhóm Portfolio Sinh viên</p>
-  </footer>
+  <script src="/common/js/script.js"></script>
 </body>
 </html>
