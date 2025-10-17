@@ -47,7 +47,7 @@ tabButtons.forEach(button => {
   });
 });
 
-    // ================== Navbar Toggler for Mobile ==================
+    //Navbar Toggler for Mobile
     const menuToggle = document.getElementById('menu-toggle');
     const navbarMenu = document.getElementById('navbar-menu');
 
@@ -66,7 +66,7 @@ tabButtons.forEach(button => {
         });
     }
 
-    // ================== Back to Top Button ==================
+//Back to Top Button
     const backToTopButton = document.getElementById('back-to-top');
 
     if (backToTopButton) {
@@ -86,3 +86,66 @@ tabButtons.forEach(button => {
         });
     }
 });
+
+//Morph Slider Controls
+const morphSlides = document.querySelectorAll('.morph-slide');
+let currentSlide = 0;
+
+// Hàm chuyển slide thủ công (nếu muốn thêm nút điều khiển)
+function nextSlide() {
+  morphSlides[currentSlide].style.animation = 'none';
+  void morphSlides[currentSlide].offsetWidth; // Trigger reflow
+  morphSlides[currentSlide].style.animation = null;
+  
+  currentSlide = (currentSlide + 1) % morphSlides.length;
+}
+
+// Tự động pause khi hover (đã có trong CSS)
+morphSlides.forEach(slide => {
+  slide.addEventListener('mouseenter', function() {
+    this.style.animationPlayState = 'paused';
+  });
+  
+  slide.addEventListener('mouseleave', function() {
+    this.style.animationPlayState = 'running';
+  });
+});
+
+// Thêm nút điều khiển nếu muốn (tùy chọn)
+function addSliderControls() {
+  const slider = document.querySelector('.morph-slider');
+  const prevBtn = document.createElement('button');
+  const nextBtn = document.createElement('button');
+  
+  prevBtn.innerHTML = '‹';
+  nextBtn.innerHTML = '›';
+  prevBtn.className = 'slider-control prev';
+  nextBtn.className = 'slider-control next';
+  
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + morphSlides.length) % morphSlides.length;
+    goToSlide(currentSlide);
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % morphSlides.length;
+    goToSlide(currentSlide);
+  });
+  
+  slider.appendChild(prevBtn);
+  slider.appendChild(nextBtn);
+}
+
+function goToSlide(index) {
+  morphSlides.forEach((slide, i) => {
+    slide.style.animation = 'none';
+    void slide.offsetWidth;
+    
+    if (i === index) {
+      slide.style.animation = `morphAnimation 24s infinite ${index * 6}s`;
+    } else {
+      slide.style.opacity = '0';
+      slide.style.animation = 'none';
+    }
+  });
+}

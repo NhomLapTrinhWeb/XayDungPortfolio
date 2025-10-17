@@ -8,13 +8,22 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- Navbar -->
 <header class="navbar">
-  <div class="navbar-brand"><a href="#">MyPortfolio</a></div>
-  <button class="navbar-toggler" id="menu-toggle"><i class="fas fa-bars"></i></button>
+  <div class="navbar-brand">
+    <a href="#" class="logo">
+      <span class="heart">♥</span> My<span>Portfolio</span> <span class="heart">♥</span>
+    </a>
+  </div>
+
+  <button class="navbar-toggler" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </button>
+
   <ul class="navbar-menu" id="navbar-menu">
     <li><a href="#hero">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -55,6 +64,16 @@
         <p>Mình thực sự yêu thích công việc hiện tại, bởi mình tin rằng việc tạo ra những sản phẩm nhỏ từ các dự án cá nhân không chỉ là một công việc kỹ thuật mà còn là một nghệ thuật mang giá trị thẩm mỹ.</p>
         <p>Công việc của mình bao gồm thu thập, xử lý, phân tích dữ liệu, xây dựng mô hình và truyền đạt kết quả một cách rõ ràng, trực quan.</p>
         <p>Nếu bạn quan tâm đến việc hợp tác hoặc thuê mình, vui lòng liên hệ qua thông tin được ghim bên dưới.</p>
+        <!-- 🎯 Mục tiêu nghề nghiệp -->
+         <h3 style="margin-top:2rem; color:#ffd700;">🎯 Mục tiêu nghề nghiệp</h3>
+         <p>
+          Trong 2 năm tới, mình mong muốn phát triển chuyên sâu trong lĩnh vực <strong>Data Science và Testing tự động</strong>, 
+          đặc biệt là áp dụng các kỹ thuật <strong>Machine Learning</strong> vào kiểm thử phần mềm và phân tích dữ liệu. 
+        </p>
+        <p>
+          Mục tiêu dài hạn của mình là trở thành <strong>Data Analyst / QA Engineer</strong> 
+          có thể thiết kế, xây dựng và tối ưu hóa các hệ thống thông minh phục vụ doanh nghiệp.
+        </p>
       </div>
     </div>
   </div>
@@ -121,17 +140,12 @@
 <!-- ================== Gallery / Slider Section ================== -->
 <section id="gallery" class="slider-section">
   <h2>Bộ sưu tập cá nhân</h2>
-<div class="slides">
-  <img src="image/me1.jpeg" alt="Ảnh 1">
-  <img src="image/me2.jpeg" alt="Ảnh 2">
-  <img src="image/me3.jpeg" alt="Ảnh 3">
-  <img src="image/me4.jpeg" alt="Ảnh 4">
-  <!-- lặp lại để chạy mượt -->
-  <img src="image/me1.jpeg" alt="Ảnh 1">
-  <img src="image/me2.jpeg" alt="Ảnh 2">
-  <img src="image/me3.jpeg" alt="Ảnh 3">
-  <img src="image/me4.jpeg" alt="Ảnh 4">
-</div>
+  <div class="morph-slider">
+    <img src="image/me1.jpeg" alt="Ảnh 1" class="morph-slide">
+    <img src="image/me2.jpeg" alt="Ảnh 2" class="morph-slide">
+    <img src="image/me3.jpeg" alt="Ảnh 3" class="morph-slide">
+    <img src="image/certificate1.jpeg" alt="Ảnh 4" class="morph-slide">
+  </div>
 </section>
 
 <!-- Skills Section -->

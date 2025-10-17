@@ -82,6 +82,108 @@ ul {
     padding-bottom: 5px;
 }
 
+/* ==== NAVBAR CHUNG ==== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 80px;
+  z-index: 100;
+}
+
+/* ==== LOGO ==== */
+.logo {
+  color: #ffcc00;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 28px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+/* “Portfolio” nhẹ hơn */
+.logo span:not(.heart) {
+  font-weight: 500;
+}
+
+/* Trái tim */
+.logo .heart {
+  color: #ffcc00;
+  font-size: 16px;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover logo */
+.logo:hover {
+  text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+  transform: scale(1.05);
+}
+.logo:hover .heart {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+/* ==== MENU ==== */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+  color: #ffcc00;
+}
+
+/* ==== RESPONSIVE ==== */
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffcc00;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Mobile hiển thị menu */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .navbar-menu.show {
+    display: flex;
+  }
+  .navbar-toggler {
+    display: block;
+  }
+}
+
 /* ================== Hero Section ================== */
 .hero-section {
   display: flex; 
@@ -461,6 +563,149 @@ section h2::after {
   }
 }
 
+/* ================== Slider Section với hiệu ứng Morph ================== */
+.slider-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.slider-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color-yellow);
+  border-radius: 2px;
+}
+
+/* Container cho slider morph */
+.morph-slider {
+  width: 80%;
+  max-width: 400px; /* Giảm chiều rộng để tập trung vào ảnh */
+  height: 500px; /* Chiều cao cố định */
+  margin: 0 auto;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  background: #000;
+}
+
+/* Ảnh trong slider */
+.morph-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: morphAnimation 20s infinite;
+  object-fit: cover; /* Đảm bảo ảnh phủ kín khung */
+  border-radius: 20px;
+}
+
+/* Đặt delay cho từng ảnh */
+.morph-slide:nth-child(1) { animation-delay: 0s; }
+.morph-slide:nth-child(2) { animation-delay: 6s; }
+.morph-slide:nth-child(3) { animation-delay: 12s; }
+.morph-slide:nth-child(4) { animation-delay: 18s; }
+
+/* Hiệu ứng morph animation */
+@keyframes morphAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1) rotate(0deg);
+    border-radius: 20px;
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    border-radius: 20px;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.05) rotate(1deg);
+    border-radius: 25px;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    border-radius: 20px;
+  }
+  30% {
+    opacity: 0;
+    transform: scale(0.95) rotate(-1deg);
+    border-radius: 15px;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) rotate(0deg);
+    border-radius: 20px;
+  }
+}
+
+/* Thêm hiệu ứng filter cho đẹp hơn */
+.morph-slide:hover {
+  animation-play-state: paused;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .morph-slider {
+    width: 90%;
+    height: 400px;
+    max-width: 300px;
+  }
+  
+  @keyframes morphAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+      border-radius: 15px;
+    }
+    5% {
+      opacity: 1;
+      transform: scale(1);
+      border-radius: 15px;
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.03);
+      border-radius: 20px;
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+      border-radius: 15px;
+    }
+    30% {
+      opacity: 0;
+      transform: scale(0.97);
+      border-radius: 10px;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+      border-radius: 15px;
+    }
+  }
+}
+
 /* ================== Hobbies Section ================== */
 .hobbies-section h2 {
   text-align: center; /* Căn giữa tiêu đề chính */
@@ -730,17 +975,23 @@ section h2::after {
 }
 
 /* Chứng chỉ (giữ nguyên style hoặc điều chỉnh nếu muốn) */
-#projects > div:last-child {
-    margin-top: 4rem;
-    text-align: left;
-}
 #projects > div:last-child h2 {
-    text-align: left; /* Căn trái tiêu đề "Chứng Chỉ" */
-    margin-left: 0;
+    text-align: center; /* Căn giữa chữ */
+    position: relative;
+    display: inline-block; /* Giúp gạch dưới nằm đúng dưới chữ */
+    color: #fff; /* hoặc giữ màu bạn đang dùng */
 }
+
 #projects > div:last-child h2::after {
-    left: 0;
-    transform: translateX(0); /* Căn trái gạch dưới */
+    content: "";
+    position: absolute;
+    bottom: -8px; /* khoảng cách gạch dưới so với chữ */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* độ dài gạch dưới */
+    height: 3px;
+    background-color: #ffcc00; /* Màu vàng */
+    border-radius: 2px;
 }
 
 /* ================== Contact ================== */
