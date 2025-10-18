@@ -1,0 +1,56 @@
+/* Animation làm phần tử "nổi lên xuống" liên tục */
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Bắt đầu tại vị trí ban đầu */
+    }
+    50% {
+        transform: translateY(-20px); /* Dịch lên 20px */
+    }
+    100% {
+        transform: translateY(0); /* Quay về vị trí ban đầu */
+    }
+}
+
+@-webkit-keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Animation di chuyển phần tử sang bên trái */
+@keyframes move-left {
+    to {
+        transform: translateX(calc(-100% - 12px)); /* Dịch sang trái bằng độ rộng phần tử + 12px */
+    }
+}
+
+@-webkit-keyframes move-left {
+    to {
+        transform: translateX(calc(-100% - 12px));
+    }
+}
+
+/* Animation di chuyển phần tử từ trái sang vị trí ban đầu */
+@keyframes move-right {
+    0% {
+        transform: translateX(-100%); /* Bắt đầu ngoài màn hình bên trái */
+    }
+    100% {
+        transform: translateX(calc(0% + 12px)); /* Dịch về vị trí gốc + 12px */
+    }
+}
+
+@-webkit-keyframes move-right {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(calc(0% + 12px));
+    }
+}
