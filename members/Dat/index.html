@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huỳnh Tiến Đạt | Portfolio</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --text: #222;
+      --bg: #f7f8fa;
+      --white: #fff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --transition: all 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      opacity: 0;
+      animation: pageReveal 1.2s ease forwards;
+    }
+
+    @keyframes pageReveal {
+      from { opacity: 0; filter: blur(8px); transform: translateY(40px); }
+      to { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 16px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      margin: 0 20px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(.17,.67,.83,.67);
+    }
+
+    section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -------- PROFILE -------- */
+    .intro__header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 25px;
+    }
+
+    .avatar {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20%;
+      font-weight: bold;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
+      transform: perspective(600px) rotateY(-10deg);
+      transition: transform 0.5s ease;
+    }
+
+    .avatar:hover {
+      transform: perspective(600px) rotateY(10deg) scale(1.05);
+    }
+
+    .intro__text h2 {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .intro__text p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    .intro__body h3 {
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .intro__body p {
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      margin-right: 8px;
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.4);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+    }
+
+    .btn:hover::before {
+      left: 120%;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: var(--primary-dark);
+      box-shadow: 0 8px 15px rgba(37,99,235,0.3);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e5e7eb;
+      color: #374151;
+      padding: 6px 12px;
+      border-radius: 10px;
+      margin-right: 8px;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .tag:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .profile__photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      background: #ccc;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+    }
+
+    .profile__photo:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .profile h3, .profile p {
+      text-align: center;
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .gallery__grid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: all 0.6s ease;
+      cursor: pointer;
+    }
+
+    .gallery__grid img:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Dự án</a>
+      <a href="#">Kỹ năng</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="intro__header">
+        <div class="avatar">TD</div>
+        <div class="intro__text">
+          <h2>Huỳnh Tiến Đạt</h2>
+          <p>Sinh viên / Lập trình viên</p>
+        </div>
+      </div>
+
+      <div class="intro__body">
+        <h3>Xin chào 👋</h3>
+        <p>Tôi là Huỳnh Tiến Đạt – sinh viên Công nghệ thông tin tại Đại học Giao Thông Vận Tải.  
+        Đam mê lập trình, yêu thích UI/UX và các công nghệ web hiện đại.</p>
+
+        <button class="btn" data-page="projects">Xem dự án</button>
+        <button class="btn" data-page="contact">Liên hệ</button>
+
+        <div style="margin-top: 15px;">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <div class="gallery__grid">
+        <img src="image/dat.png" alt="">
+        <img src="image/z7129434182361_412a8da12a769d728d84c4b694d0380c.jpg" alt="">
+        <img src="image/z7129434191956_3bd113ff28df86a90a38353a56946a0c.jpg" alt="">
+        <img src="image/z7129434209985_d9680939abeaece49f6c8c5396127230.jpg" alt="">
+      </div>
+    </section>
+
+    <section class="profile">
+      <img src="image/dat.png" class="profile__photo" alt="Huỳnh Tiến Đạt">
+      <h3>Huỳnh Tiến Đạt</h3>
+      <p>Sinh viên / Lập trình viên</p>
+      <p><b>Email:tiendat407338@gmail.com</b> </p>
+      <p><b>Điện thoại:0917407338</b> </p>
+      <p><b>GitHub:https://github.com/NeitTad8105</b> <a href=""></a></p>
+    </section>
+  </main>
+
+  <script>
+    // Hiệu ứng reveal khi cuộn
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(sec => observer.observe(sec));
+
+    // Hiệu ứng chuyển trang khi click button
+    document.querySelectorAll(".btn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        document.body.style.transition = "all 0.8s ease";
+        document.body.style.filter = "blur(10px)";
+        document.body.style.opacity = "0";
+        setTimeout(() => alert(`Đi đến trang: ${btn.dataset.page}`), 800);
+      });
+    });
+  </script>
+</body>
+</html>
