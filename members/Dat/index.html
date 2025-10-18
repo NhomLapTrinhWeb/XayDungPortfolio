@@ -1,328 +1,396 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huỳnh Tiến Đạt | Portfolio</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --text: #222;
-      --bg: #f7f8fa;
-      --white: #fff;
-      --shadow: 0 10px 30px rgba(0,0,0,0.1);
-      --transition: all 0.4s ease;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Huỳnh Tiến Đạt — Software Developer</title>
+<meta name="description" content="Portfolio của Huỳnh Tiến Đạt — Software Developer, Frontend enthusiast" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<style>
+/* Giữ nguyên CSS gốc của bạn — thêm gallery */
+  :root{
+    --bg:#0b0f16;
+    --surface:#0f1720;
+    --muted:#94a3b8;
+    --text:#e6eef8;
+    --accent:#4f46e5;
+    --accent-2:#00e6d7;
+    --glass: rgba(255,255,255,0.03);
+    --card-shadow: 0 8px 30px rgba(2,6,23,0.7);
+    --smooth: cubic-bezier(.17,.84,.44,1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(79,70,229,0.06), transparent),
+                radial-gradient(900px 500px at 90% 90%, rgba(0,230,215,0.025), transparent),
+                var(--bg);
+    color:var(--text);
+    font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    line-height:1.5;
+    scroll-behavior:smooth;
+  }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      opacity: 0;
-      animation: pageReveal 1.2s ease forwards;
-    }
+  .wrap{max-width:1150px;margin:36px auto;padding:24px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:52px;height:52px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:white;box-shadow:0 6px 18px rgba(79,70,229,0.25);}
+  .brand h1{font-size:16px;margin:0;color:var(--text)}
+  .brand p{margin:0;font-size:13px;color:var(--muted)}
+  nav{display:flex;gap:14px;align-items:center}
+  .nav-link{color:var(--muted);font-size:14px;padding:8px 12px;border-radius:8px;}
+  .nav-link:hover{color:var(--text);background:var(--glass);transform:translateY(-2px)}
+  .cta{background:linear-gradient(90deg,var(--accent),#7c3aed);
+    color:white;border:none;padding:8px 14px;border-radius:10px;cursor:pointer;
+    font-weight:600;box-shadow:0 8px 24px rgba(79,70,229,0.18);}
+  .cta:active{transform:translateY(1px)}
 
-    @keyframes pageReveal {
-      from { opacity: 0; filter: blur(8px); transform: translateY(40px); }
-      to { opacity: 1; filter: blur(0); transform: translateY(0); }
-    }
+  .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-bottom:30px}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    border-radius:14px;padding:28px;box-shadow:var(--card-shadow);
+    border:1px solid rgba(255,255,255,0.03);}
+  .hero-left h2{margin:0 0 8px 0;font-size:28px;color:var(--text)}
+  .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;
+    background:rgba(79,70,229,0.08);color:var(--accent);font-size:13px;margin-bottom:14px}
+  .lead{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .profile-mini{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+  .profile-photo{width:120px;height:120px;border-radius:16px;overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:28px}
+  .left-col{display:flex;flex-direction:column;gap:22px}
+  .section-title{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .section-title h4{margin:0;font-size:16px;color:var(--text)}
+  .muted{color:var(--muted);font-size:14px}
+  .skills{display:flex;gap:10px;flex-wrap:wrap}
+  .skill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;
+    font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.02);}
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .proj{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;
+    border:1px solid rgba(255,255,255,0.03);transition:transform .35s var(--smooth);}
+  .proj:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.55)}
+  .contact-card{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding-bottom:30px;margin-top:40px}
 
-    header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      padding: 16px 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-    }
+  /* ---- Gallery ---- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:12px;
+    margin-top:12px;
+  }
+  .gallery-grid img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:transform .4s var(--smooth),filter .4s var(--smooth);
+  }
+  .gallery-grid img:hover{
+    transform:scale(1.05);
+    filter:brightness(1.1);
+  }
 
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      margin: 0 20px;
-      position: relative;
-      transition: var(--transition);
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-
-    section {
-      background: var(--white);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      transform: translateY(60px);
-      opacity: 0;
-      transition: all 0.8s cubic-bezier(.17,.67,.83,.67);
-    }
-
-    section.reveal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* -------- PROFILE -------- */
-    .intro__header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 25px;
-    }
-
-    .avatar {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20%;
-      font-weight: bold;
-      font-size: 22px;
-      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
-      transform: perspective(600px) rotateY(-10deg);
-      transition: transform 0.5s ease;
-    }
-
-    .avatar:hover {
-      transform: perspective(600px) rotateY(10deg) scale(1.05);
-    }
-
-    .intro__text h2 {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .intro__text p {
-      color: #555;
-      font-size: 15px;
-    }
-
-    .intro__body h3 {
-      color: var(--primary-dark);
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .intro__body p {
-      color: #333;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      margin-right: 8px;
-      font-weight: 500;
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.4);
-      transform: skewX(-20deg);
-      transition: 0.6s;
-    }
-
-    .btn:hover::before {
-      left: 120%;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background: var(--primary-dark);
-      box-shadow: 0 8px 15px rgba(37,99,235,0.3);
-    }
-
-    .tag {
-      display: inline-block;
-      background: #e5e7eb;
-      color: #374151;
-      padding: 6px 12px;
-      border-radius: 10px;
-      margin-right: 8px;
-      font-size: 13px;
-      transition: var(--transition);
-    }
-
-    .tag:hover {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.1);
-    }
-
-    .profile__photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin: 0 auto 12px;
-      display: block;
-      background: #ccc;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease;
-    }
-
-    .profile__photo:hover {
-      transform: scale(1.05) rotate(2deg);
-    }
-
-    .profile h3, .profile p {
-      text-align: center;
-    }
-
-    .gallery__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .gallery__grid img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      transition: all 0.6s ease;
-      cursor: pointer;
-    }
-
-    .gallery__grid img:hover {
-      transform: scale(1.08) rotate(2deg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      filter: brightness(1.1);
-    }
-
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--smooth),transform .7s var(--smooth)}
+  .reveal.show{opacity:1;transform:translateY(0)}
+  @media (max-width:980px){.grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
+<div class="wrap">
+  <!-- header -->
   <header>
+    <div class="brand"><div class="logo">TD</div><div><h1>Huỳnh Tiến Đạt</h1><p>Software Developer</p></div></div>
     <nav>
-      <a href="#">Giới thiệu</a>
-      <a href="#">Dự án</a>
-      <a href="#">Kỹ năng</a>
-      <a href="#">Liên hệ</a>
+      <a class="nav-link" href="#about">Giới thiệu</a>
+      <a class="nav-link" href="#projects">Dự án</a>
+      <a class="nav-link" href="#skills">Kỹ năng</a>
+      <a class="nav-link" href="#gallery">Hình ảnh</a>
+      <a class="nav-link" href="#contact">Liên hệ</a>
+      <button class="cta" id="downloadBtn">Tải CV</button>
     </nav>
   </header>
 
-  <main>
-    <section class="intro">
-      <div class="intro__header">
-        <div class="avatar">TD</div>
-        <div class="intro__text">
-          <h2>Huỳnh Tiến Đạt</h2>
-          <p>Sinh viên / Lập trình viên</p>
-        </div>
-      </div>
-
-      <div class="intro__body">
-        <h3>Xin chào 👋</h3>
-        <p>Tôi là Huỳnh Tiến Đạt – sinh viên Công nghệ thông tin tại Đại học Giao Thông Vận Tải.  
-        Đam mê lập trình, yêu thích UI/UX và các công nghệ web hiện đại.</p>
-
-        <button class="btn" data-page="projects">Xem dự án</button>
-        <button class="btn" data-page="contact">Liên hệ</button>
-
-        <div style="margin-top: 15px;">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">React</span>
-        </div>
-      </div>
-
-      <div class="gallery__grid">
-        <img src="image/dat.png" alt="">
-        <img src="image/z7129434182361_412a8da12a769d728d84c4b694d0380c.jpg" alt="">
-        <img src="image/z7129434191956_3bd113ff28df86a90a38353a56946a0c.jpg" alt="">
-        <img src="image/z7129434209985_d9680939abeaece49f6c8c5396127230.jpg" alt="">
-      </div>
-    </section>
-
-    <section class="profile">
-      <img src="image/dat.png" class="profile__photo" alt="Huỳnh Tiến Đạt">
+  <!-- hero -->
+  <section class="hero">
+    <div class="card hero-left reveal">
+      <span class="eyebrow">Frontend • Backend • AI-assisted</span>
+      <h2>Xin chào — Tôi là <span style="color:var(--accent)">Huỳnh Tiến Đạt</span></h2>
+      <p class="lead">Sinh viên CNTT tại UTH. Tôi xây dựng sản phẩm web gọn nhẹ,sử dụng AI để phát triển xây dựng web.</p>
+    </div>
+    <aside class="card profile-mini reveal">
+      <div class="profile-photo"><img src="image/dat.png" alt=""></div>
       <h3>Huỳnh Tiến Đạt</h3>
-      <p>Sinh viên / Lập trình viên</p>
-      <p><b>Email:tiendat407338@gmail.com</b> </p>
-      <p><b>Điện thoại:0917407338</b> </p>
-      <p><b>GitHub:https://github.com/NeitTad8105</b> <a href=""></a></p>
+      <p class="muted">Lập trình viên | Sinh viên CNTT</p>
+    </aside>
+  </section>
+
+  <!-- main grid -->
+  <div class="grid">
+    <div class="left-col">
+      <section id="about" class="card reveal">
+        <div class="section-title"><h4>Giới thiệu</h4></div>
+        <p class="muted">Tôi yêu thích sáng tạo, học hỏi nhanh và làm việc có tổ chức. Mục tiêu: trở thành Software Engineer chuyên nghiệp.</p>
+      </section>
+
+      <section id="skills" class="card reveal">
+        <div class="section-title"><h4>Kỹ năng</h4></div>
+        <div class="skills">
+          <span class="skill">HTML/CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Python</span>
+          <span class="skill">Git</span>
+        </div>
+      </section>
+
+      <section id="projects" class="card reveal">
+        <div class="section-title"><h4>Dự án</h4></div>
+        <div class="projects">
+          <article class="proj"><h5>Carbon Credit Marketplace</h5><p class="muted">Hệ thống tín chỉ carbon cho xe EV, backend Java.</p></article>
+          <article class="proj"><h5>WMS – Warehouse</h5><p class="muted">Thiết kế ERD, logic inbound/outbound, SQL demo.</p></article>
+          <article class="proj"><h5>Portfolio</h5><p class="muted">Trang cá nhân responsive, tối ưu UX/UI.</p></article>
+        </div>
+      </section>
+
+      <!-- ======= NEW GALLERY SECTION ======= -->
+      <section id="gallery" class="card reveal">
+        <div class="section-title"><h4>Hình ảnh cá nhân & hoạt động</h4><div class="muted">Một vài khoảnh khắc</div></div>
+        <div class="gallery-grid">
+          <img src="image/dat.png" alt="">
+          <img src="image/z7129434182361_412a8da12a769d728d84c4b694d0380c.jpg" alt="">
+          <img src="image/z7129434191956_3bd113ff28df86a90a38353a56946a0c.jpg" alt="">
+          <img src="image/z7129434209985_d9680939abeaece49f6c8c5396127230.jpg" alt="">
+        </div>
+      </section>
+    </div>
+
+    <aside class="card contact-card reveal" id="contact">
+      <div class="section-title"><h4>Liên hệ</h4></div>
+      <div class="muted">📧 tiendat407338@gmail.com<br>📱 0917407338<br>
+        💻 <a href="https://github.com/NeitTad8105" target="_blank">github.com/NeitTad8105</a></div>
+    </aside>
+  </div>
+
+  <footer>© <span id="year"></span> Huỳnh Tiến Đạt — Portfolio</footer>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+// reveal animation
+const io = new IntersectionObserver((entries)=>{
+ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Huỳnh Tiến Đạt — Software Developer</title>
+<meta name="description" content="Portfolio của Huỳnh Tiến Đạt — Software Developer, Frontend enthusiast" />
+
+<!-- ======= STYLES ======= -->
+<style>
+  /* ---------------- Root & Reset ---------------- */
+  :root{
+    --bg:#0b0f16;
+    --surface:#0f1720;
+    --muted:#94a3b8;
+    --text:#e6eef8;
+    --accent:#4f46e5;
+    --accent-2:#00e6d7;
+    --glass: rgba(255,255,255,0.03);
+    --card-shadow: 0 8px 30px rgba(2,6,23,0.7);
+    --smooth: cubic-bezier(.17,.84,.44,1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    min-height:100%;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(79,70,229,0.06), transparent),
+                radial-gradient(900px 500px at 90% 90%, rgba(0,230,215,0.025), transparent),
+                var(--bg);
+    color:var(--text);
+    font-family: Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    line-height:1.5;
+    scroll-behavior:smooth;
+  }
+
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+
+  .wrap{
+    max-width:1150px;
+    margin:36px auto;
+    padding:24px;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:22px;
+  }
+
+  .brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .logo{
+    width:52px;height:52px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:white;box-shadow:0 6px 18px rgba(79,70,229,0.25);
+  }
+  .brand h1{font-size:16px;margin:0;color:var(--text)}
+  .brand p{margin:0;font-size:13px;color:var(--muted)}
+
+  nav{display:flex;gap:14px;align-items:center}
+  .nav-link{
+    color:var(--muted);font-size:14px;padding:8px 12px;border-radius:8px;
+  }
+  .nav-link:hover{color:var(--text);background:var(--glass)}
+  .cta{
+    background:linear-gradient(90deg,var(--accent),#7c3aed);
+    color:white;border:none;padding:8px 14px;border-radius:10px;cursor:pointer;
+    font-weight:600;box-shadow:0 8px 24px rgba(79,70,229,0.18);
+  }
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns: 1fr 360px;gap:28px;align-items:center;margin-bottom:30px;}
+  .card {
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px;padding:28px;box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .hero-left h2{margin:0 0 8px 0;font-size:28px;color:var(--text);}
+  .eyebrow{
+    display:inline-block;padding:6px 10px;border-radius:999px;
+    background: rgba(79,70,229,0.08); color:var(--accent);
+    font-size:13px;margin-bottom:14px;
+  }
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns: 2fr 1fr; gap:28px;}
+  .left-col{display:flex;flex-direction:column;gap:22px}
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .proj{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    transition: transform .35s var(--smooth), box-shadow .35s var(--smooth);
+  }
+  .proj:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(2,6,23,0.55)}
+
+  /* Back-to-home button */
+  .back-to-home{
+    position:fixed;
+    bottom:26px;right:28px;
+    width:58px;height:58px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#fff;
+    font-size:24px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(79,70,229,0.35);
+    transition:all .35s ease;
+    z-index:999;
+  }
+  .back-to-home:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 15px 35px rgba(0,230,215,0.45);
+  }
+  .back-to-home.hide{
+    opacity:0;pointer-events:none;transform:scale(0.8);
+  }
+
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">TD</div><div><h1>Huỳnh Tiến Đạt</h1><p>Software Developer</p></div></div>
+      <nav>
+        <a class="nav-link" href="#about">Giới thiệu</a>
+        <a class="nav-link" href="#projects">Dự án</a>
+        <a class="nav-link" href="#skills">Kỹ năng</a>
+        <a class="nav-link" href="#contact">Liên hệ</a>
+        <button class="cta" id="downloadBtn">Tải CV</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card hero-left">
+        <span class="eyebrow">Frontend • Backend • AI-assisted</span>
+        <h2>Xin chào — Tôi là <span style="color:var(--accent)">Huỳnh Tiến Đạt</span></h2>
+        <p class="lead">Sinh viên CNTT tại UTH...</p>
+      </div>
+      <aside class="card profile-mini">
+        <img src="image/dat.png" alt="Avatar Huỳnh Tiến Đạt" style="width:100%;border-radius:12px">
+      </aside>
     </section>
-  </main>
 
+    <div class="grid">
+      <section id="about" class="card">
+        <h4>Giới thiệu</h4>
+        <p class="muted">Mình là sinh viên...</p>
+      </section>
+
+      <aside class="card" id="contact">
+        <h4>Liên hệ</h4>
+        <p>Email: tiendat407338@gmail.com</p>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Huỳnh Tiến Đạt — Portfolio
+    </footer>
+  </div>
+
+  <!-- 🏠 Nút quay về Home -->
+  <div class="back-to-home" id="backHomeBtn" title="Về đầu trang">🏠</div>
+
+  <!-- ======= SCRIPT ======= -->
   <script>
-    // Hiệu ứng reveal khi cuộn
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-        }
-      });
-    }, { threshold: 0.2 });
-    sections.forEach(sec => observer.observe(sec));
+    // update year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hiệu ứng chuyển trang khi click button
-    document.querySelectorAll(".btn").forEach(btn => {
-      btn.addEventListener("click", e => {
-        document.body.style.transition = "all 0.8s ease";
-        document.body.style.filter = "blur(10px)";
-        document.body.style.opacity = "0";
-        setTimeout(() => alert(`Đi đến trang: ${btn.dataset.page}`), 800);
-      });
+    // Back-to-home button logic
+    const backHomeBtn=document.getElementById('backHomeBtn');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>350) backHomeBtn.classList.remove('hide');
+      else backHomeBtn.classList.add('hide');
     });
-  </script>
+    backHomeBtn.addEventListener('click',()=>{
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+    backHomeBtn.classList.add('hide');
+ 
+ </script>
+<div style="text-align:center; margin: 40px 0;">
+    <button 
+      onclick="window.history.back()" 
+      style="padding: 10px 20px; 
+             background-color: #0d6efd; 
+             color: white; 
+             border: none; 
+             border-radius: 5px; 
+             cursor: pointer; 
+             font-size: 16px;">
+      ← Quay lại trang trước
+    </button>
+  </div>
+
 </body>
 </html>
