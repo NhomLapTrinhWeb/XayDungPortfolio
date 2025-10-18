@@ -1,0 +1,136 @@
+/* header + navbar */
+.header {
+  width: 100%;
+  color: white;
+  position: relative;
+  background: linear-gradient(120deg, #9eb8ff, #6a80ff);
+  overflow: hidden;
+  padding-top: 60px; /* tạo khoảng cách vừa đủ dưới navbar */
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* bù đúng chiều cao navbar cố định */
+}
+
+/* thanh navbar cố định trên đầu */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #6e8efb, #5b6cff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+/* logo */
+.navbar__logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+/* danh sách liên kết */
+.navbar__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar__links li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.navbar__links li a:hover::after {
+  width: 100%;
+}
+
+/* banner */
+.banner {
+  margin-top: 0; /* không cần thêm khoảng cách nếu header có padding-top */
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.banner__content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.banner__content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.banner__content span {
+  color: #1c1c3c;
+}
+
+.banner__content p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
+  color: #f3f4f6;
+}
+
+/* nút */
+.btn {
+  display: inline-block;
+  background: #1c1c3c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  transition: 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn:hover {
+  background: white;
+  color: #1c1c3c;
+}
+
+/* ảnh banner */
+.banner__image {
+  flex: 1;
+  min-width: 300px;
+  height: 320px;
+  background: url(../../assets/img1.jpg) center/cover no-repeat;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
