@@ -1,0 +1,316 @@
+/* ========= Biến, reset, helper ========= */
+:root{
+  --bg: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --primary: #2563eb;
+  --ink-on: #ffffff;
+
+  --radius: 14px;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,.06);
+  --shadow-md: 0 10px 30px rgba(0,0,0,.12);
+  --container: 1100px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink); background: var(--bg); line-height: 1.6;
+}
+img{ max-width: 100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+.skiplink{ position:absolute; left:-9999px; }
+.skiplink:focus{ left:12px; top:12px; background:#000; color:#fff; padding:8px 12px; z-index:9999; }
+
+/* ========= Layout chung ========= */
+.container{ width:min(calc(100% - 32px), var(--container)); margin-inline:auto; }
+.section{ padding-block: 48px; }
+.section__title{ margin:0 0 16px; font-size: clamp(22px, 3vw, 30px); }
+.reveal{ opacity:0; transform: translateY(12px); }
+.reveal.is-visible{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
+
+/* ========= Button ========= */
+.btn{ display:inline-block; padding:12px 16px; border-radius: var(--radius); border:1px solid transparent; font-weight:600; cursor:pointer; transition: transform .15s ease, box-shadow .2s ease; }
+.btn--primary{ background: var(--primary); color: var(--ink-on); box-shadow: var(--shadow-sm); }
+.btn--ghost{ background:#fff; border-color: var(--border); }
+.btn--sm{ padding:8px 12px; font-size:14px; }
+.btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+/* ========= Header / Nav ========= */
+.p-nav{
+  position: sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between; padding:10px 16px;
+}
+.p-nav__brand{ font-weight:800; letter-spacing:.2px; }
+.p-nav__menu{ display:flex; gap:14px; list-style:none; margin:0; padding:0; }
+.p-nav__link{ padding:8px 10px; border-radius:10px; }
+.p-nav__link:hover{ background:#f8fafc; }
+
+.p-nav__checkbox{ display:none; }
+.p-nav__toggle{ display:none; width:36px; height:28px; cursor:pointer; align-items:center; justify-content:center; gap:4px; flex-direction:column; }
+.p-nav__bar{ width:100%; height:3px; background:#0f172a; border-radius:2px; }
+
+@media (max-width: 768px){
+  .p-nav__toggle{ display:flex; }
+  .p-nav__menu{
+    position:absolute; inset:56px 12px auto 12px; background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+    padding:12px; display:grid; gap:8px; box-shadow: var(--shadow-sm); transform-origin: top right; transform:scale(.97); opacity:0; pointer-events:none; transition: transform .15s ease, opacity .15s ease;
+  }
+  .p-nav__checkbox:checked ~ .p-nav__menu{ transform:scale(1); opacity:1; pointer-events:auto; }
+}
+
+/* ========= Hero ========= */
+.p-hero{
+  position:relative; min-height: 56vh; display:grid; place-items:center; text-align:center; color:#fff;
+  background: url('images/phong-hobby.jpg') center/cover no-repeat;
+  overflow:hidden;
+}
+.p-hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.5)); }
+.p-hero__content{ position:relative; z-index:1; padding:24px; animation: floatUp .8s ease both; }
+.p-hero__avatar{ width:110px; height:110px; border-radius:50%; border:3px solid #fff; margin-inline:auto 12px; margin-bottom:12px; box-shadow: var(--shadow-sm); }
+.p-hero__title{ margin:0 0 6px; font-size: clamp(26px, 5vw, 44px); }
+.p-hero__subtitle{ margin:0 0 16px; color:#e2e8f0; }
+.p-hero__actions{ display:flex; gap:10px; justify-content:center; }
+
+@keyframes floatUp{
+  from{ opacity:0; transform: translateY(10px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* Hero */
+.p-hero{
+  position: relative;
+  min-height: 56vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  background: url('images/phong-hobby.jpg') center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* overlay nằm dưới content */
+.p-hero__overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.5));
+  z-index: 0;                /* thêm dòng này */
+}
+
+/* content nổi lên và KHÔNG có nền */
+.p-hero__content{
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  animation: floatUp .8s ease both;
+  background: transparent;   /* đảm bảo trong suốt */
+}
+
+/* avatar căn giữa đúng */
+.p-hero__avatar{
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-inline: auto;       /* <— sửa: bỏ "auto 12px" */
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* TẮT lớp phủ tối */
+.p-hero__overlay{
+  display: none;         /* hoặc background: transparent; */
+}
+
+
+/* ========= About ========= */
+.about__lead{ margin:0 0 16px; color: var(--muted); }
+.about__quick{ display:grid; gap:8px; padding:0; margin:8px 0 0; list-style:none; }
+.about__item{ background:#fff; border:1px solid var(--border); padding:10px 12px; border-radius: var(--radius); }
+
+/* ========= Career ========= */
+.career__grid{ display:grid; gap:14px; }
+@media (min-width: 700px){ .career__grid{ grid-template-columns: 1fr 1fr; } }
+.career-card{ border:1px solid var(--border); border-radius: var(--radius); padding:16px; background:#fff; box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .2s ease; }
+.career-card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.career-card__title{ margin:0 0 8px; }
+
+/* ========= Hobbies ========= */
+.hobby-list{ display:flex; flex-wrap:wrap; gap:10px; list-style:none; padding:0; margin:0; }
+.hobby-list__item{ border:1px solid var(--border); border-radius:999px; padding:8px 12px; background:#fff; }
+
+/* ========= Skills ========= */
+.skills__grid{ display:grid; gap:16px; }
+@media (min-width: 900px){ .skills__grid{ grid-template-columns: repeat(2, 1fr); } }
+.skill-group{ border:1px solid var(--border); border-radius: var(--radius); padding:14px; background:#fff; box-shadow: var(--shadow-sm); }
+.skill-group__title{ margin:0 0 10px; }
+
+.progress{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+.progress__row{ display:grid; grid-template-columns: 160px 1fr; align-items:center; gap:10px; }
+.progress__label{ font-weight:600; }
+.progress__bar{
+  --val: 70%;
+  position:relative; height:10px; background:#f1f5f9; border-radius: 999px; overflow:hidden;
+}
+.progress__bar::after{
+  content:""; position:absolute; inset:0; width:var(--val);
+  background: linear-gradient(90deg, var(--primary), #60a5fa);
+  animation: grow 1s ease both;
+}
+@keyframes grow{
+  from{ width:0; } to{ width:var(--val); }
+}
+
+.badge-list{ list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:8px; }
+.badge-list__item{ background:#fff; border:1px solid var(--border); border-radius:999px; padding:6px 10px; }
+
+/* Languages */
+.lang{ display:grid; gap:12px; }
+.lang__title{ margin:0 0 4px; }
+
+/* ========= Timeline (Awards) ========= */
+.timeline{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.timeline__item{ display:grid; grid-template-columns: 90px 1fr; gap:12px; align-items:start; }
+.timeline__time{ font-weight:700; color:var(--primary); }
+.timeline__body{ background:#fff; border:1px solid var(--border); border-radius: var(--radius); padding:12px; }
+
+/* ========= Cards (Projects) ========= */
+.cards{ display:grid; gap:14px; }
+@media (min-width: 800px){ .cards{ grid-template-columns: repeat(3, 1fr); } }
+.card{ background:#fff; border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); height:100%; transition: transform .18s ease, box-shadow .2s ease; }
+.card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.card__body{ padding:14px; display:grid; gap:8px; }
+.card__title{ margin:0; }
+
+/* ========= Gallery ========= */
+.gallery__grid{ display:grid; gap:12px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px){ .gallery__grid{ grid-template-columns: repeat(4, 1fr); } }
+.gallery__item{ border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow-sm); }
+.gallery__img{ aspect-ratio: 4/3; object-fit: cover; transform: scale(1.01); transition: transform .25s ease; }
+.gallery__img:hover{ transform: scale(1.06); }
+
+/* ========= Contact ========= */
+.contact-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+.contact-list__item{ background:#fff; border:1px solid var(--border); border-radius: var(--radius); padding:10px 12px; }
+
+/* ========= Footer ========= */
+.p-footer{ border-top:1px solid var(--border); }
+.p-footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:20px 16px; }
+.p-footer__text{ margin:0; color:var(--muted); font-size:14px; }
+
+/* Nav underline slide */
+.p-nav__link{ position:relative; }
+.p-nav__link::after{
+  content:""; position:absolute; left:10%; right:10%; bottom:2px; height:2px;
+  background: linear-gradient(90deg, var(--primary), #60a5fa);
+  transform: scaleX(0); transform-origin: left; transition: transform .2s ease;
+}
+.p-nav__link:hover::after{ transform: scaleX(1); }
+
+/* Tiêu đề hero gradient + shine */
+.p-hero__title{
+  background: linear-gradient(90deg, #fff, #dbeafe 35%, #93c5fd 65%, #fff);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shine 3s linear infinite;
+}
+@keyframes shine{
+  0%{ filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  50%{ filter: drop-shadow(0 2px 6px rgba(255,255,255,.35)); }
+  100%{ filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+}
+
+.p-nav__link.is-active{
+  color: var(--primary);
+}
+.p-nav__link.is-active::after{ transform: scaleX(1); }
+
+/* ===== Subtle diagonal stripes background (very light blue) ===== */
+:root{
+  /* bạn có thể tinh chỉnh 3 biến này nếu muốn */
+  --pattern-bg: #ffffff;                 /* màu nền */
+  --pattern-fg: hsla(210, 63%, 79%, 0.06);/* xanh biển rất nhạt (alpha 0.06) */
+  --pattern-thickness: 2px;              /* độ dày sọc */
+  --pattern-spacing: 18px;               /* khoảng cách giữa các sọc */
+}
+
+/* đặt pattern cho toàn trang; hero có ảnh riêng nên không bị ảnh hưởng */
+html{ background: var(--pattern-bg); }
+body{
+  background:
+    repeating-linear-gradient(
+      135deg,                     /* góc chéo */
+      var(--pattern-fg) 0 calc(var(--pattern-thickness)),
+      transparent  calc(var(--pattern-thickness)) calc(var(--pattern-spacing))
+    );
+  background-attachment: fixed;   /* sọc đứng yên khi cuộn, tạo cảm giác “paper” */
+}
+
+/* nếu có section nào bạn muốn nền trắng 100%, bỏ sọc, thêm class .no-pattern */
+.no-pattern{ background: #fff !important; }
+
+
+/* ===== Hobbies Marquee (CSS-only) ===== */
+.hobby-marquee{
+  overflow: hidden;
+  border-radius: var(--radius);
+  position: relative;
+  padding-block: 8px;
+  /* fade 2 mép cho đẹp */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.hobby-marquee__track{
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: hobbyMarquee 24s linear infinite;
+}
+.hobby-marquee:hover .hobby-marquee__track{
+  animation-play-state: paused; /* dừng khi hover */
+}
+
+.hobby-list{ display:flex; gap:12px; padding:0; margin:0; list-style:none; }
+.hobby-list__item{
+  white-space: nowrap; font-weight:500; letter-spacing:.2px;
+  padding:12px 18px; border-radius:999px; border:1px solid #dbeafe;
+  background: linear-gradient(180deg,#eef5ff,#ffffff);
+  box-shadow: 0 2px 8px rgba(37,99,235,.04);
+}
+.hobby-list__item:nth-child(even){
+  border-color:#c7f0ff;
+  background: linear-gradient(180deg,#eafaff,#ffffff);
+}
+
+@keyframes hobbyMarquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* vì có 2 danh sách giống nhau */
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hobby-marquee__track{ animation: none; }
+}
+
+/* Timeline layout có ảnh bên phải */
+.timeline__body{
+  background:#fff; border:1px solid var(--border); border-radius: var(--radius);
+  padding:12px; display:grid; grid-template-columns: 1fr auto; gap:12px; align-items:center;
+}
+
+/* Ảnh chứng chỉ – kích thước phù hợp */
+.timeline__img{
+  width: 160px;                 /* rộng vừa phải trên desktop */
+  aspect-ratio: 3 / 4;          /* đứng dọc */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Mobile: ảnh xuống dưới, rộng tối đa 260px */
+@media (max-width: 720px){
+  .timeline__body{ grid-template-columns: 1fr; }
+  .timeline__img{ width: min(100%, 260px); margin-top: 6px; justify-self: start; }
+}

@@ -1,0 +1,97 @@
+/* phần container chính của mục tiêu */
+.goals__container {
+  display: flex; /* sắp xếp theo trục dọc */
+  flex-direction: column;
+  gap: 32px; /* khoảng cách giữa các phần tử */
+}
+
+/* lưới chia hai cột (mục tiêu - sở thích) */
+.goals__grid_container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr)); /* chia 2 cột linh hoạt */
+  gap: 12px;
+}
+
+/* khung chung của mỗi cột */
+.goals__grid_item {
+  overflow: hidden;
+  border: 2px solid var(--p-100);
+  border-radius: 24px;
+  background-color: var(--p-20);
+  padding: 2rem 2rem;
+  box-shadow: 0px 2px 4px hsla(233, 45%, 20%, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* thụt nội dung vào trong */
+  padding-inline: 40px;
+}
+
+/* hiệu ứng nổi nhẹ khi hover */
+.goals__grid_item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 6px 12px hsla(233, 45%, 20%, 0.2);
+}
+
+/* tiêu đề và mô tả trong mỗi khung */
+.goals__grid_item_header h2 {
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 12px;
+}
+
+.goals__grid_item_header p {
+  color: var(--n--500);
+  max-width: 60ch; /* giới hạn độ dài dòng */
+  line-height: 1.6;
+}
+
+/* cột trái: mục tiêu nghề nghiệp */
+.goals__career {
+  background: white;
+  padding-left: 20px;
+
+  /* cho toàn khung xịch vô 20px */
+  margin-left: 40px;
+
+  /* đường chia mảnh giữa hai cột */
+  border-right: 1px solid var(--p-100);
+}
+
+/* cột phải: sở thích cá nhân */
+.goals__hobbies {
+  background: var(--p-20);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 20px;
+
+  /* cho toàn khung xịch vô 20px */
+  margin-right: 40px;
+}
+
+/* danh sách sở thích */
+.hobbies__list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--n--700);
+}
+
+/* từng dòng trong danh sách */
+.hobbies__list li {
+  position: relative;
+  padding-left: 12px; /* chừa chỗ cho dấu chấm */
+}
+
+/* dấu chấm đầu dòng tùy chỉnh */
+.hobbies__list li::before {
+  content: "•";
+  color: var(--p-300);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
