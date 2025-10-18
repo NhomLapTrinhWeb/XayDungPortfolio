@@ -1,0 +1,104 @@
+/* Phần bao toàn bộ khu vực footer */
+.footer__section {
+  background: linear-gradient(120deg, var(--p-200), var(--p-600));
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+/* ==============================
+    HÌNH TRANG TRÍ TRÁI - PHẢI
+============================== */
+/* Định dạng chung cho hình trang trí hai bên */
+  & .footer__img {
+    position: absolute;
+    width: 220px; 
+    height: auto;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.9;
+    pointer-events: none;
+    transform: translateY(-50%); /* giúp canh giữa theo chiều dọc */
+    top: 25%; /* canh giữa theo trục dọc */
+  }
+
+  
+/* Hình bên trái */
+  & .footer__img--left {
+    left: 0;
+  }
+
+/* Hình bên phải */
+  & .footer__img--right {
+    right: 0;
+  }
+
+/* ==============================
+   CONTAINER & CONTENT
+============================== */
+/* Container tổng của nội dung trong footer */
+  & .footer__container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: hsla(var(--p-600-code), 0.1);
+    border-radius: 3rem;
+  }
+
+  /* Khung chứa phần nội dung chính (text, icon, v.v) */
+  & .footer__content_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Giảm khoảng cách giữa các phần tử */
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1.5rem 1rem; /* Giảm padding để khung nhỏ lại */
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Tiêu đề chính của footer */
+  & .footer__title {
+    color: var(--p-600);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Thông tin liên hệ */
+  & .footer__contact p {
+    margin: 0.3rem 0;
+    color: var(--n-600);
+    font-size: 1rem;
+  }
+  
+  /* Container chứa icon mạng xã hội */
+  & .footer__socials {
+    margin: 0.5rem 0;
+
+    a {
+      margin: 0 0.6rem;
+      display: inline-block;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+  }
+
+  /* Dòng bản quyền cuối cùng */
+  & .footer__copyright {
+    margin-top: 0.5rem;
+    color: var(--n-500);
+    font-size: 0.85rem;
+  }
+}
+

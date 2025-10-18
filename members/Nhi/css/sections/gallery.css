@@ -1,0 +1,62 @@
+/* Phần bao toàn bộ khu vực gallery */
+.gallery__section {
+  position: relative;
+}
+
+/* Tiêu đề chính của phần gallery */
+.gallery__section .section__title {
+  text-align: center;
+  color: var(--p-950);
+}
+
+/* Đoạn mô tả ngắn bên dưới tiêu đề */
+.gallery__section .section__description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0.5rem auto 2rem auto;
+  color: var(--n-700);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Bố cục lưới cho phần ảnh */
+.aboutMe__gallery {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Ảnh */
+.gallery__item {
+  width: 100%;
+  height: 280px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #e8ebf9;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Ảnh bên trong khung */
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(.25,.8,.25,1);
+}
+
+/* Hiệu ứng nổi lên khi hover vào khung ảnh */
+.gallery__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+}
+
+/* Ảnh phóng to nhẹ khi hover */
+.gallery__item:hover img {
+  transform: scale(1.07);
+}
