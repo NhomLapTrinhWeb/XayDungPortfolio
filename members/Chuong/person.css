@@ -1,157 +1,939 @@
-/* ======= PHONG CÁCH NÂNG CẤP ======= */
 
-.banner {
-  background: linear-gradient(120deg, #6a11cb, #2575fc);
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+/* ===========================================
+   Reset và thiết lập cơ bản
+   =========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.banner h1 {
-  margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow-x: hidden;
 }
 
-nav ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-nav a {
-  color: #fff;
-  font-weight: 600;
-  margin: 0 10px;
-  transition: opacity 0.3s;
-   text-decoration: none; /* ✅ bỏ gạch chân */
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.2s;
-}
-
-nav a:hover {
-  color: #ffd6ff; /* đổi màu khi hover */
-  transform: translateY(-2px); /* hiệu ứng nhẹ */
-}
-
-nav a:hover { opacity: 0.8; }
-
-/* --- Bố cục xen kẽ --- */
-.profile-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 10%;
-  gap: 40px;
-  animation: fadeInUp 1s ease;
-}
-
-.profile-section.alt {
-  flex-direction: row-reverse;
-  background: #fafafa;
-}
-
-.image-side img {
-  width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  transition: transform 0.3s;
-}
-
-.image-side img:hover { transform: scale(1.03); }
-
-.text-side { flex: 1; }
-.image-side { flex: 1; }
-
-.text-side h2 {
-  color: #6a11cb;
-  margin-bottom: 15px;
-}
-
-.skill { margin-bottom: 10px; }
-.bar {
-  height: 10px;
-  background: #eee;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.fill {
-  height: 100%;
-  background: linear-gradient(120deg, #6a11cb, #2575fc);
-}
-
-/* ==== Mục tiêu nghề nghiệp / Timeline ==== */
-.career-section {
-  margin: 40px auto;
-  padding: 20px 40px;
-  border-left: 4px solid #6a11cb;
-}
-
-.career-section h2 {
-  color: #6a11cb;
-  margin-bottom: 10px;
-}
-
-.timeline-item {
-  position: relative;
-  margin: 20px 0 20px 30px; /* Thụt chữ sang phải để tránh chấm đè */
-  padding-left: 20px;
-}
-
-.timeline-item::before {
-  content: "●";
-  color: #6a11cb;
-  position: absolute;
-  left: -25px; /* đẩy chấm sang trái */
-  top: 0;
-  font-size: 14px;
-}
-
-.timeline-item span {
-  color: #6a11cb;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 3px;
-}
-
-
-/* --- Footer --- */
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #f2f2f2;
-  border-top: 2px solid #6a11cb;
-}
-
-.btn {
-  text-decoration: none;
-  display: inline-block;
-  background: linear-gradient(120deg, #6a11cb, #2575fc);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: transform 0.3s;
-}
-.btn:hover { transform: scale(1.05); }
-
-/* --- Hiệu ứng cuộn --- */
-@keyframes fadeInUp {
-  from {opacity: 0; transform: translateY(30px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .profile-section, .profile-section.alt {
-    flex-direction: column;
-    padding: 30px 5%;
-  }
-  .image-side, .text-side {
+/* ===========================================
+    Navbar/Banner
+    Sử dụng Flexbox
+    Animation CSS3
+   =========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
     width: 100%;
-  }
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* CSS3 Animation: slideDown */
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Hiệu ứng CSS3: Animation slideDown cho navbar */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Flexbox layout cho nav container */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* CSS3 Transform và Transition */
+    transition: transform 0.3s ease;
+}
+
+/* CSS3 Transform: Scale và Rotate khi hover */
+.logo:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+/* Flexbox cho menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    /* CSS3 Transition */
+    transition: color 0.3s ease;
+}
+
+/* CSS3: Pseudo-element animation cho underline effect */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* CSS3 Transition */
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-menu a:hover {
+    color: #667eea;
+}
+
+/* ===========================================
+   Hero/Banner Section
+    Grid Layout
+    CSS3 Animation
+   =========================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CSS3 Animation: Floating particles background */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    /* CSS3 Animation: Float effect */
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: 10%;
+    right: 10%;
+    /* CSS3 Animation: Reverse float */
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+/* CSS3 Keyframes: Float animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* Grid Layout cho hero content */
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+    /* CSS3 Animation: Fade in from left */
+    animation: fadeInLeft 1s ease-out;
+}
+
+/* CSS3 Keyframes: fadeInLeft */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-text .highlight {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* CSS3 Animation: Pulse effect */
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* CSS3 Keyframes: Pulse animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    /* CSS3 Animation: Staggered fade in */
+    animation: fadeInLeft 1s ease-out 0.3s backwards;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: white;
+    color: #667eea;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+    animation: fadeInLeft 1s ease-out 0.6s backwards;
+}
+
+/* CSS3 Transform: Lift effect on hover */
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================================
+   Phần ảnh cá nhân (4 ảnh)
+   Grid Layout cho gallery
+   =========================================== */
+.hero-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    /* CSS3 Animation: Fade in from right */
+    animation: fadeInRight 1s ease-out;
+}
+
+/* CSS3 Keyframes: fadeInRight */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Scale và Rotate on hover */
+.hero-images img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ===========================================
+   Sections chung
+   =========================================== */
+.section {
+    padding: 5rem 5%;
+    background: white;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+    /* CSS3 Animation */
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* CSS3 Keyframes: fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CSS3: Pseudo-element với gradient */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+}
+
+/* ===========================================
+    Phần Thông tin cá nhân
+   Thay đổi thành thông tin cá nhân
+   Grid Layout
+   =========================================== */
+.personal-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.profile-image {
+    text-align: center;
+}
+
+.profile-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 10px solid #f0f0f0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    /* CSS3 Animation: Rotate in */
+    animation: rotateIn 1s ease-out;
+}
+
+/* CSS3 Keyframes: rotateIn animation */
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+.info-details {
+    animation: fadeInRight 1s ease-out;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Slide effect on hover */
+.info-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #667eea;
+    /* CSS3 Transition */
+    transition: color 0.3s ease;
+}
+
+.info-item:hover i {
+    color: white;
+}
+
+.info-item strong {
+    min-width: 150px;
+}
+
+/* ===========================================
+    Phần Mục tiêu nghề nghiệp
+   CSS3 Effects: Backdrop blur, animation
+   =========================================== */
+.career-goal {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.goal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    /* CSS3: Backdrop filter */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    /* CSS3 Animation: Zoom in */
+    animation: zoomIn 0.8s ease-out;
+}
+
+/* CSS3 Keyframes: zoomIn animation */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.goal-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.goal-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* ===========================================
+   Phần Sở thích
+   Grid Layout với auto-fit
+   =========================================== */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hobby-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* CSS3 Transform: Lift và rotate effect */
+.hobby-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.hobby-card i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Rotate 360deg on hover */
+.hobby-card:hover i {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.hobby-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.hobby-card p {
+    color: #666;
+}
+
+/* ===========================================
+   Phần Ngôn ngữ và Kỹ năng
+   Grid Layout
+   =========================================== */
+.skills-section {
+    background: #f8f9fa;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+.skill-item {
+    margin-bottom: 2rem;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.skill-bar {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    /* CSS3 Animation: Fill bar */
+    animation: fillBar 1.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CSS3 Animation: Shimmer effect */
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    /* CSS3 Animation: Infinite shimmer */
+    animation: shimmer 2s infinite;
+}
+
+/* CSS3 Keyframes: fillBar animation */
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+}
+
+/* CSS3 Keyframes: shimmer animation */
+@keyframes shimmer {
+    to {
+        left: 100%;
+    }
+}
+
+/* ===========================================
+   Phần Chứng chỉ - Giải thưởng
+   Grid Layout
+   =========================================== */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certificate-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* CSS3 Transform: Lift effect và border animation */
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    border-left-width: 10px;
+}
+
+.certificate-card i {
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.certificate-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.certificate-card p {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.certificate-card .date {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* ===========================================
+   Phần Dự án
+   Grid Layout
+   =========================================== */
+.projects-section {
+    background: #f8f9fa;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* CSS3 Transform: Scale và lift effect */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image i {
+    font-size: 4rem;
+    color: white;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Scale và rotate icon */
+.project-card:hover .project-image i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.project-content p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    padding: 0.3rem 0.8rem;
+    background: #e8eaf6;
+    color: #667eea;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Scale effect on hover */
+.tech-tag:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.1);
+}
+
+.project-link {
+    display: inline-block;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Slide effect */
+.project-link:hover {
+    color: #764ba2;
+    transform: translateX(5px);
+}
+
+/* ===========================================
+   Phần Liên hệ (Github, FB, Instagram)
+   Grid Layout
+   =========================================== */
+.contact-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    /* CSS3: Backdrop filter */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Slide effect */
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Social media links - YÊU CẦU 9 */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    /* CSS3: Backdrop filter */
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    /* CSS3 Transform và Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Lift và rotate 360deg */
+.social-links a:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Form */
+.contact-form {
+    background: rgba(255, 255, 255, 0.1);
+    /* CSS3: Backdrop filter */
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Scale effect on focus */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: white;
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    /* CSS3 Transition */
+    transition: all 0.3s ease;
+}
+
+/* CSS3 Transform: Lift effect on hover */
+.submit-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================================
+   Footer
+   =========================================== */
+footer {
+    background: #1a1a2e;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* ===========================================
+   Responsive Design
+   Đảm bảo website hoạt động tốt trên mobile
+   =========================================== */
+@media (max-width: 768px) {
+    /* Chuyển grid sang 1 cột trên mobile */
+    .hero-content,
+    .personal-info,
+    .skills-container,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* ===========================================
+   Hiệu ứng CSS3 scroll animation
+   Animation khi scroll vào viewport
+   =========================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    /* CSS3 Transition */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
