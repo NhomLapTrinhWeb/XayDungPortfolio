@@ -1,12 +1,14 @@
 /* header + navbar */
 .header {
-  width: 100%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 100px auto 0 auto; /* ✅ tránh navbar đè */
   color: white;
   position: relative;
   background: linear-gradient(120deg, #9eb8ff, #6a80ff);
   overflow: hidden;
-  padding-top: 60px; /* tạo khoảng cách vừa đủ dưới navbar */
-  padding-bottom: 4rem;
+  padding: 60px 40px 4rem; /* ✅ giảm lại top padding cho cân đối */
+  border-radius: 20px;
   box-sizing: border-box;
 }
 
@@ -134,3 +136,20 @@ html {
   border-radius: 1rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
+ 
+/* --- Responsive Navbar --- */
+
+/* Ẩn checkbox toggle (dùng để bật menu) */
+#menu-toggle {
+  display: none;
+}
+
+/* Nút menu ☰ hiển thị trên màn hình nhỏ */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
