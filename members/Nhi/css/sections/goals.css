@@ -1,15 +1,20 @@
 /* phần container chính của mục tiêu */
 .goals__container {
-  display: flex; /* sắp xếp theo trục dọc */
+  display: flex;
   flex-direction: column;
-  gap: 32px; /* khoảng cách giữa các phần tử */
+  gap: 32px;
+  width: 100%;
+  max-width: 1100px; /* 👈 giới hạn chiều rộng để không dính 2 bên */
+  margin: 0 auto; /* 👈 căn giữa toàn bộ */
+  padding: 0 40px; /* 👈 thụt vào đều 2 bên */
+  box-sizing: border-box;
 }
 
 /* lưới chia hai cột (mục tiêu - sở thích) */
 .goals__grid_container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 1fr)); /* chia 2 cột linh hoạt */
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(250px, 1fr)); /* linh hoạt */
+  gap: 20px;
 }
 
 /* khung chung của mỗi cột */
@@ -18,12 +23,9 @@
   border: 2px solid var(--p-100);
   border-radius: 24px;
   background-color: var(--p-20);
-  padding: 2rem 2rem;
+  padding: 2rem;
   box-shadow: 0px 2px 4px hsla(233, 45%, 20%, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* thụt nội dung vào trong */
-  padding-inline: 40px;
 }
 
 /* hiệu ứng nổi nhẹ khi hover */
@@ -43,19 +45,13 @@
 
 .goals__grid_item_header p {
   color: var(--n--500);
-  max-width: 60ch; /* giới hạn độ dài dòng */
+  max-width: 60ch;
   line-height: 1.6;
 }
 
 /* cột trái: mục tiêu nghề nghiệp */
 .goals__career {
   background: white;
-  padding-left: 20px;
-
-  /* cho toàn khung xịch vô 20px */
-  margin-left: 40px;
-
-  /* đường chia mảnh giữa hai cột */
   border-right: 1px solid var(--p-100);
 }
 
@@ -65,10 +61,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 20px;
-
-  /* cho toàn khung xịch vô 20px */
-  margin-right: 40px;
 }
 
 /* danh sách sở thích */
@@ -84,7 +76,7 @@
 /* từng dòng trong danh sách */
 .hobbies__list li {
   position: relative;
-  padding-left: 12px; /* chừa chỗ cho dấu chấm */
+  padding-left: 12px;
 }
 
 /* dấu chấm đầu dòng tùy chỉnh */
