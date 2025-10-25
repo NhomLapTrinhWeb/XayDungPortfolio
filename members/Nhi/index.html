@@ -21,23 +21,22 @@
     <!--------------- Header (Navbar + Banner) ----------------->
     <header class="header" id="home">
       <nav class="navbar">
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <div class="navbar__logo">Nhi</div>
+          <ul class="navbar__links">
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#about">Thông tin</a></li>
+            <li><a href="#gallery">Bộ sưu tập</a></li>
+            <li><a href="#goals">Mục tiêu & Sở thích</a></li>
+            <li><a href="#skills">Ngôn ngữ & Kỹ năng</a></li>
+            <li><a href="#projects">Dự án</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+          </ul>
 
-        <ul class="navbar__links">
-          <li><a href="#home">Trang chủ</a></li>
-          <li><a href="#about">Thông tin</a></li>
-          <li><a href="#gallery">Bộ sưu tập</a></li>
-          <li><a href="#goals">Mục tiêu và sở thích</a></li>
-          <li><a href="#skills">Ngôn ngữ và kỹ năng</a></a></li>
-          <li><a href="#certificates">Chứng chỉ</a></li>
-          <li><a href="#projects">Dự án</a></li>
-          <li><a href="#contact">Liên hệ</a></li>
-        </ul>
-
-        <div class="navbar__toggle" id="navbar-toggle">
-          <span></span><span></span><span></span>
-        </div>
-      </nav>
+  <!-- Overlay mờ nền -->
+  <div class="navbar__overlay"></div>
+</nav>
 
       <div class="banner container">
         <div class="banner__content">
@@ -88,7 +87,7 @@
         <div class="section__header">
           <h1 class="section__title">Bộ Sưu Tập </h1>
           <p class="section__description">
-            Một vài hình ảnh ghi lại những khoảnh khắc đáng nhớ trong cuộc sống của mình 💙
+            Một vài hình ảnh ghi lại những khoảnh khắc đáng nhớ trong cuộc sống của mình.
           </p>
         </div>
 
