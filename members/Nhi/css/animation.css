@@ -1,56 +1,102 @@
-/* Animation làm phần tử "nổi lên xuống" liên tục */
-@keyframes float {
-    0% {
-        transform: translateY(0); /* Bắt đầu tại vị trí ban đầu */
+    /* Animation làm phần tử "nổi lên xuống" liên tục */
+    @keyframes float {
+        0% {
+            transform: translateY(0); /* Bắt đầu tại vị trí ban đầu */
+        }
+        50% {
+            transform: translateY(-20px); /* Dịch lên 20px */
+        }
+        100% {
+            transform: translateY(0); /* Quay về vị trí ban đầu */
+        }
     }
-    50% {
-        transform: translateY(-20px); /* Dịch lên 20px */
-    }
-    100% {
-        transform: translateY(0); /* Quay về vị trí ban đầu */
-    }
-}
 
-@-webkit-keyframes float {
-    0% {
-        transform: translateY(0);
+    @-webkit-keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
 
-/* Animation di chuyển phần tử sang bên trái */
-@keyframes move-left {
-    to {
-        transform: translateX(calc(-100% - 12px)); /* Dịch sang trái bằng độ rộng phần tử + 12px */
+    /* Animation di chuyển phần tử sang bên trái */
+    @keyframes move-left {
+        to {
+            transform: translateX(calc(-100% - 12px)); /* Dịch sang trái bằng độ rộng phần tử + 12px */
+        }
     }
-}
 
-@-webkit-keyframes move-left {
-    to {
-        transform: translateX(calc(-100% - 12px));
+    @-webkit-keyframes move-left {
+        to {
+            transform: translateX(calc(-100% - 12px));
+        }
     }
-}
 
-/* Animation di chuyển phần tử từ trái sang vị trí ban đầu */
-@keyframes move-right {
-    0% {
-        transform: translateX(-100%); /* Bắt đầu ngoài màn hình bên trái */
+    /* Animation di chuyển phần tử từ trái sang vị trí ban đầu */
+    @keyframes move-right {
+        0% {
+            transform: translateX(-100%); /* Bắt đầu ngoài màn hình bên trái */
+        }
+        100% {
+            transform: translateX(calc(0% + 12px)); /* Dịch về vị trí gốc + 12px */
+        }
     }
-    100% {
-        transform: translateX(calc(0% + 12px)); /* Dịch về vị trí gốc + 12px */
-    }
-}
 
-@-webkit-keyframes move-right {
-    0% {
-        transform: translateX(-100%);
+    @-webkit-keyframes move-right {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(calc(0% + 12px));
+        }
     }
-    100% {
-        transform: translateX(calc(0% + 12px));
+
+    /* Responsive cho màn hình nhỏ */
+    @media (max-width: 768px) {
+    /* Hiện icon menu */
+    .menu-icon {
+        display: block;
     }
-}
+
+    /* Ẩn danh sách link mặc định */
+    .navbar__links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* ẩn hoàn toàn */
+        width: 240px;
+        height: 100vh;
+        background: linear-gradient(135deg, #6e8efb, #5b6cff);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 5rem 1.5rem;
+        gap: 1.5rem;
+        transition: right 0.4s ease;
+    }
+
+    /* Khi checkbox bật thì hiện menu */
+    #menu-toggle:checked ~ .navbar__links {
+        right: 0;
+    }
+
+    /* Canh lại thanh navbar */
+    .navbar {
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+    }
+
+    /* Logo nhỏ lại chút */
+    .navbar__logo {
+        font-size: 1.5rem;
+    }
+
+    /* Tăng kích thước link cho dễ bấm */
+    .navbar__links li a {
+        font-size: 1.1rem;
+    }
+    }
+
